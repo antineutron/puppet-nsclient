@@ -24,6 +24,7 @@ class nsclient::params {
   $check_nscp_enabled      = true
   $check_system_enabled    = true
   $check_wmi_enabled       = true
+  $check_nrpe_enabled      = true
   $nrpe_server_enabled     = true
   $nsca_client_enabled     = true
   $nsclient_server_enabled = true
