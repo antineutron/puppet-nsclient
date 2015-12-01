@@ -11,7 +11,7 @@ class nsclient::params {
   $allowed_hosts           = []
   $service_state           = 'running'
   $service_enable          = true
-  $package_source_location = 'https://github.com/mickem/nscp/releases/download'
+  $package_source_location = 'https://github.com/mickem/nscp/releases/download/0.4.3.143'
   $package_name            = 'NSClient++ (x64)'
   $package_source          = 'NSCP-0.4.3.143-x64.msi'
   $download_destination    = 'c:/temp'
