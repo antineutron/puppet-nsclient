@@ -6,24 +6,24 @@ describe 'nsclient', :type => :class do
       :osfamily  => 'Windows'
   } }
   let(:params) {{
-      :package_source_location => 'http://files.nsclient.org/stable',
-      :package_name            => 'NSCP-0.4.1.101-x64.msi',
+      :package_source_location => 'https://github.com/mickem/nscp/releases/download/0.4.3.143',
+      :package_source          => 'NSCP-0.4.3.143-x64.msi',
+      :package_name            => 'NSCP-0.4.3.143-x64.msi',
       :download_destination    => 'c:\\temp'
   }}
 
   it { should contain_class('nsclient::install').that_comes_before('nsclient::service') }
 
-
   context 'using params defaults' do
     it { should contain_class('nsclient') }
     it { should contain_download_file('NSCP-Installer').with(
-      'url'                   => 'http://files.nsclient.org/stable/NSCP-0.4.1.101-x64.msi',
+      'url'                   => 'https://github.com/mickem/nscp/releases/download/0.4.3.143/NSCP-0.4.3.143-x64.msi',
       'destination_directory' => 'c:\temp'
     )}
-    it { should contain_package('NSCP-0.4.1.101-x64.msi').with(
+    it { should contain_package('NSCP-0.4.3.143-x64.msi').with(
       'ensure'   => 'installed',
       'provider' => 'windows',
-      'source'   => 'c:\temp\NSCP-0.4.1.101-x64.msi',
+      'source'   => 'c:\temp\NSCP-0.4.3.143-x64.msi',
       'require'  => 'Download_file[NSCP-Installer]'
     )}
     it { should contain_service('nscp').with_ensure('running') }
