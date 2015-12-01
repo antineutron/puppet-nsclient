@@ -13,6 +13,7 @@ class nsclient::install {
   validate_string($nsclient::package_source)
   validate_string($nsclient::package_name)
 
+  $file = "${nsclient::download_destination}\\${nsclient::package_source}"
   $source = "${nsclient::package_source_location}/${nsclient::package_source}"
 
   case downcase($::osfamily) {
@@ -32,7 +33,7 @@ class nsclient::install {
 
       package { $nsclient::package_name:
         ensure   => installed,
-        source   => "${nsclient::download_destination}\\${nsclient::package_source}",
+        source   => $file,
         provider => 'windows',
         require  => Download_file['NSCP-Installer']
       }

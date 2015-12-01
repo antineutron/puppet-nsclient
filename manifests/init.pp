@@ -14,7 +14,8 @@
 # === Parameters
 #
 # [*allowed_hosts*]
-# Array of hosts that your client can communicate with. You can use netmasks (/ syntax) or * to create ranges.
+# Array of hosts that your client can communicate with. You can use netmasks
+# (/ syntax) or * to create ranges.
 #
 # [*service_state*]
 # Whether you want to nsclient service to start up. Defaults to running
@@ -23,7 +24,8 @@
 # Whether you want to nsclient service to start up at boot. Defaults to true
 #
 # [*package_source_location*]
-# This is the default site to download your package from (e.g. http://files.nsclient.org/stable)
+# This is the default site to download your package from
+# (e.g. http://files.nsclient.org/stable)
 #
 # [*package_source*]
 # This is the source name of the package to be downloaded
@@ -32,9 +34,10 @@
 # This is name of the package to download (e.g. NSCP-0.4.1.101-x64.msi)
 #
 # [*download_destination*]
-# This is the folder to where we need to download the NSCP Installer. Package cannot take a remote file source
-# Because of Windows, we need to set this to be a top level directory (e.g. c:\\temp) or we would need to
-# recursively check the file path.
+# This is the folder to where we need to download the NSCP Installer.
+# Package cannot take a remote file source.
+# Because of Windows, we need to set this to be a top level directory
+# (e.g. c:\\temp) or we would need to recursively check the file path.
 #
 # [*config_template*]
 # This is the template to use as the config file.
@@ -63,7 +66,18 @@ class nsclient (
   $package_source          = $nsclient::params::package_source,
   $package_name            = $nsclient::params::package_name,
   $download_destination    = $nsclient::params::download_destination,
-  $config_template         = $nsclient::params::config_template
+  $config_template         = $nsclient::params::config_template,
+  $check_disk_enabled      = $nsclient::params::check_disk_enabled,
+  $check_eventlog_enabled  = $nsclient::params::check_eventlog_enabled,
+  $check_scripts_enabled   = $nsclient::params::check_scripts_enabled,
+  $check_helpers_enabled   = $nsclient::params::check_helpers_enabled,
+  $check_nscp_enabled      = $nsclient::params::check_nscp_enabled,
+  $check_system_enabled    = $nsclient::params::check_system_enabled,
+  $check_wmi_enabled       = $nsclient::params::check_wmi_enabled,
+  $check_nrpe_enabled      = $nsclient::params::check_nrpe_enabled,
+  $nsca_client_enabled     = $nsclient::params::nsca_client_enabled,
+  $nsclient_server_enabled = $nsclient::params::nsclient_server_enabled,
+
 ) inherits nsclient::params {
 
   validate_string($package_source_location)
