@@ -23,14 +23,14 @@ describe 'nsclient', :type => :class do
     it do
       is_expected.to contain_download_file('NSCP-Installer').with(
         'url'                   => 'https://github.com/mickem/nscp/releases/download/0.4.3.143/NSCP-0.4.3.143-x64.msi',
-        'destination_directory' => 'c:\temp'
+        'destination_directory' => 'c:/temp'
       )
     end
     it do
       is_expected.to contain_package('NSCP-0.4.3.143-x64.msi').with(
         'ensure'   => 'installed',
         'provider' => 'windows',
-        'source'   => 'c:\temp\NSCP-0.4.3.143-x64.msi',
+        'source'   => 'c:/temp/NSCP-0.4.3.143-x64.msi',
         'require'  => 'Download_file[NSCP-Installer]'
       )
     end
