@@ -121,8 +121,6 @@ describe 'nsclient', type: :class do
     it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckEventLog = 0/) }
   end
 
-#  $check_scripts_enabled   = $nsclient::params::check_scripts_enabled,
-
   context 'when check_scripts is enabled' do
     let(:params) {{ 'check_scripts_enabled' => true, 'service_state' => 'running', 'service_enable' => 'true' }}
 
@@ -134,7 +132,6 @@ describe 'nsclient', type: :class do
 
     it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckExternalScripts = 0/) }
   end
-#  $check_helpers_enabled   = $nsclient::params::check_helpers_enabled,
 
   context 'when check_helpers is enabled' do
     let(:params) {{ 'check_helpers_enabled' => true, 'service_state' => 'running', 'service_enable' => 'true' }}
@@ -147,7 +144,6 @@ describe 'nsclient', type: :class do
 
     it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckHelpers = 0/) }
   end
-#  $check_nscp_enabled      = $nsclient::params::check_nscp_enabled,
 
   context 'when check_nscp is enabled' do
     let(:params) {{ 'check_nscp_enabled' => true, 'service_state' => 'running', 'service_enable' => 'true' }}
@@ -160,7 +156,6 @@ describe 'nsclient', type: :class do
 
     it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckNSCP = 0/) }
   end
-#  $check_system_enabled    = $nsclient::params::check_system_enabled,
 
   context 'when check_system is enabled' do
     let(:params) {{ 'check_system_enabled' => true, 'service_state' => 'running', 'service_enable' => 'true' }}
@@ -173,7 +168,6 @@ describe 'nsclient', type: :class do
 
     it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckSystem = 0/) }
   end
-#  $check_wmi_enabled       = $nsclient::params::check_wmi_enabled,
 
   context 'when check_wmi is enabled' do
     let(:params) {{ 'check_wmi_enabled' => true, 'service_state' => 'running', 'service_enable' => 'true' }}
@@ -186,7 +180,6 @@ describe 'nsclient', type: :class do
 
     it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckWMI = 0/) }
   end
-#  $check_nrpe_enabled      = $nsclient::params::check_nrpe_enabled,
 
   context 'when nrpe_server is enabled' do
     let(:params) {{ 'nrpe_server_enabled' => true, 'service_state' => 'running', 'service_enable' => 'true' }}
@@ -199,7 +192,6 @@ describe 'nsclient', type: :class do
 
     it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NRPEServer = 0/) }
   end
-#  $nsca_client_enabled     = $nsclient::params::nsca_client_enabled,
 
   context 'when nsca_client is enabled' do
     let(:params) {{ 'nsca_client_enabled' => true, 'service_state' => 'running', 'service_enable' => 'true' }}
@@ -212,7 +204,6 @@ describe 'nsclient', type: :class do
 
     it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSCAClient = 0/) }
   end
-#  $nsclient_server_enabled = $nsclient::params::nsclient_server_enabled,
 
   context 'when nsclient_server is enabled' do
     let(:params) {{ 'nsclient_server_enabled' => true, 'service_state' => 'running', 'service_enable' => 'true' }}
@@ -224,6 +215,20 @@ describe 'nsclient', type: :class do
     let(:params) {{ 'nsclient_server_enabled' => false, 'service_state' => 'running', 'service_enable' => 'true' }}
 
     it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSClientServer = 0/) }
+  end
+
+  context 'with a list of custom aliases' do
+    let(:params) {{
+      'service_state' => 'running', 'service_enable' => 'true', 'custom_aliases' => [
+        {'name' => 'foo', 'command' => 'MyFooCommand', 'args' => 'a list of args for foo'},
+        {'name' => 'bar', 'command' => 'MyBarCommand', 'args' => 'a list of args for bar'},
+        {'name' => 'baz', 'command' => 'MyBazCommand', 'args' => 'a list of args for baz'},
+      ]
+    }}
+
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_foo = MyFooCommand a list of args for foo/) }
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_bar = MyBarCommand a list of args for bar/) }
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_baz = MyBazCommand a list of args for baz/) }
   end
 
 end

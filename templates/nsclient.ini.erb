@@ -107,5 +107,8 @@ alias_volumes = CheckDriveSize MinWarn=$ARG1$% MinCrit=$ARG2$% CheckAll=volumes 
 ; alias_volumes_loose - Alias for alias_volumes_loose. To configure this item add a section called: /settings/external scripts/alias/alias_volumes_loose
 alias_volumes_loose = CheckDriveSize MinWarn=$ARG1$% MinCrit=$ARG2$% CheckAll=volumes FilterType=FIXED ignore-unreadable 
 
+<% @custom_aliases.each do |xalias| -%>
+alias_<%= xalias['name'] %> = <%= xalias['command'] %> <%= xalias['args'] %>
+<% end -%>
 ; default - Alias for default. To configure this item add a section called: /settings/external scripts/alias/default
 default = 
