@@ -75,7 +75,7 @@ class nsclient (
   $check_nscp_enabled      = $nsclient::params::check_nscp_enabled,
   $check_system_enabled    = $nsclient::params::check_system_enabled,
   $check_wmi_enabled       = $nsclient::params::check_wmi_enabled,
-  $check_nrpe_enabled      = $nsclient::params::check_nrpe_enabled,
+  $nrpe_server_enabled     = $nsclient::params::nrpe_server_enabled,
   $nsca_client_enabled     = $nsclient::params::nsca_client_enabled,
   $nsclient_server_enabled = $nsclient::params::nsclient_server_enabled,
 
