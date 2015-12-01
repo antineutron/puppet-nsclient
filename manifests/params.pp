@@ -11,10 +11,10 @@ class nsclient::params {
   $allowed_hosts           = []
   $service_state           = 'running'
   $service_enable          = true
-  $package_source_location = 'https://www.nsclient.org/files/stable'
+  $package_source_location = 'https://github.com/mickem/nscp/releases/download'
   $package_name            = 'NSClient++ (x64)'
-  $package_source          = 'NSCP-0.4.1.101-x64.msi'
-  $download_destination    = 'c:/temp'
+  $package_source          = '0.4.3.143/NSCP-0.4.3.143-x64.msi'
+  $download_destination    = 'C:\temp'
   $config_template         = 'nsclient/nsclient.ini.erb'
   $install_path            = 'C:\Program Files\NSClient++'
   $check_disk_enabled      = true
