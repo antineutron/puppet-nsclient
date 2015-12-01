@@ -78,6 +78,7 @@ class nsclient (
   $nrpe_server_enabled     = $nsclient::params::nrpe_server_enabled,
   $nsca_client_enabled     = $nsclient::params::nsca_client_enabled,
   $nsclient_server_enabled = $nsclient::params::nsclient_server_enabled,
+  $allow_arguments         = $nsclient::params::allow_arguments,
   $custom_aliases          = [],
 ) inherits nsclient::params {
 

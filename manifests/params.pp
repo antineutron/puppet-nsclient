@@ -27,4 +27,5 @@ class nsclient::params {
   $nrpe_server_enabled     = true
   $nsca_client_enabled     = true
   $nsclient_server_enabled = true
+  $allow_arguments         = false
 }
