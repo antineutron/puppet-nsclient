@@ -96,4 +96,134 @@ describe 'nsclient', type: :class do
     # it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allowed hosts = 10\.21\.0\.0\/22,10\.21\.4\.0\/22/) }
     it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(%r{allowed hosts = 10.21.0.0/22,10.21.4.0/22}) }
   end
+
+  context 'when check_disk is enabled' do
+    let(:params) {{ 'check_disk_enabled' => true, 'service_state' => 'running', 'service_enable' => 'true' }}
+
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckDisk = 1/) }
+  end
+
+  context 'when check_disk is disabled' do
+    let(:params) {{ 'check_disk_enabled' => false, 'service_state' => 'running', 'service_enable' => 'true' }}
+
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckDisk = 0/) }
+  end
+
+  context 'when check_eventlog is enabled' do
+    let(:params) {{ 'check_eventlog_enabled' => true, 'service_state' => 'running', 'service_enable' => 'true' }}
+
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckEventLog = 1/) }
+  end
+
+  context 'when check_eventlog is disabled' do
+    let(:params) {{ 'check_eventlog_enabled' => false, 'service_state' => 'running', 'service_enable' => 'true' }}
+
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckEventLog = 0/) }
+  end
+
+#  $check_scripts_enabled   = $nsclient::params::check_scripts_enabled,
+
+  context 'when check_scripts is enabled' do
+    let(:params) {{ 'check_scripts_enabled' => true, 'service_state' => 'running', 'service_enable' => 'true' }}
+
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckExternalScripts = 1/) }
+  end
+
+  context 'when check_scripts is disabled' do
+    let(:params) {{ 'check_scripts_enabled' => false, 'service_state' => 'running', 'service_enable' => 'true' }}
+
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckExternalScripts = 0/) }
+  end
+#  $check_helpers_enabled   = $nsclient::params::check_helpers_enabled,
+
+  context 'when check_helpers is enabled' do
+    let(:params) {{ 'check_helpers_enabled' => true, 'service_state' => 'running', 'service_enable' => 'true' }}
+
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckHelpers = 1/) }
+  end
+
+  context 'when check_helpers is disabled' do
+    let(:params) {{ 'check_helpers_enabled' => false, 'service_state' => 'running', 'service_enable' => 'true' }}
+
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckHelpers = 0/) }
+  end
+#  $check_nscp_enabled      = $nsclient::params::check_nscp_enabled,
+
+  context 'when check_nscp is enabled' do
+    let(:params) {{ 'check_nscp_enabled' => true, 'service_state' => 'running', 'service_enable' => 'true' }}
+
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckNSCP = 1/) }
+  end
+
+  context 'when check_nscp is disabled' do
+    let(:params) {{ 'check_nscp_enabled' => false, 'service_state' => 'running', 'service_enable' => 'true' }}
+
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckNSCP = 0/) }
+  end
+#  $check_system_enabled    = $nsclient::params::check_system_enabled,
+
+  context 'when check_system is enabled' do
+    let(:params) {{ 'check_system_enabled' => true, 'service_state' => 'running', 'service_enable' => 'true' }}
+
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckSystem = 1/) }
+  end
+
+  context 'when check_system is disabled' do
+    let(:params) {{ 'check_system_enabled' => false, 'service_state' => 'running', 'service_enable' => 'true' }}
+
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckSystem = 0/) }
+  end
+#  $check_wmi_enabled       = $nsclient::params::check_wmi_enabled,
+
+  context 'when check_wmi is enabled' do
+    let(:params) {{ 'check_wmi_enabled' => true, 'service_state' => 'running', 'service_enable' => 'true' }}
+
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckWMI = 1/) }
+  end
+
+  context 'when check_wmi is disabled' do
+    let(:params) {{ 'check_wmi_enabled' => false, 'service_state' => 'running', 'service_enable' => 'true' }}
+
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckWMI = 0/) }
+  end
+#  $check_nrpe_enabled      = $nsclient::params::check_nrpe_enabled,
+
+  context 'when nrpe_server is enabled' do
+    let(:params) {{ 'nrpe_server_enabled' => true, 'service_state' => 'running', 'service_enable' => 'true' }}
+
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NRPEServer = 1/) }
+  end
+
+  context 'when nrpe_server is disabled' do
+    let(:params) {{ 'nrpe_server_enabled' => false, 'service_state' => 'running', 'service_enable' => 'true' }}
+
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NRPEServer = 0/) }
+  end
+#  $nsca_client_enabled     = $nsclient::params::nsca_client_enabled,
+
+  context 'when nsca_client is enabled' do
+    let(:params) {{ 'nsca_client_enabled' => true, 'service_state' => 'running', 'service_enable' => 'true' }}
+
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSCAClient = 1/) }
+  end
+
+  context 'when nsca_client is disabled' do
+    let(:params) {{ 'nsca_client_enabled' => false, 'service_state' => 'running', 'service_enable' => 'true' }}
+
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSCAClient = 0/) }
+  end
+#  $nsclient_server_enabled = $nsclient::params::nsclient_server_enabled,
+
+  context 'when nsclient_server is enabled' do
+    let(:params) {{ 'nsclient_server_enabled' => true, 'service_state' => 'running', 'service_enable' => 'true' }}
+
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSClientServer = 1/) }
+  end
+
+  context 'when nsclient_server is disabled' do
+    let(:params) {{ 'nsclient_server_enabled' => false, 'service_state' => 'running', 'service_enable' => 'true' }}
+
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSClientServer = 0/) }
+  end
+
 end

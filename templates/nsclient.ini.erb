@@ -9,34 +9,34 @@
 [/modules]
 
 ; CheckDisk - CheckDisk can check various file and disk related things. The current version has commands to check Size of hard drives and directories.
-CheckDisk = <%= @check_disk_enabled %>
+CheckDisk = <%= (@check_disk_enabled ? 1 : 0) %>
 
 ; Event log Checker. - Check for errors and warnings in the event log. This is only supported through NRPE so if you plan to use only NSClient this wont help you at all.
-CheckEventLog = <%= @check_eventlog_enabled %>
+CheckEventLog = <%= (@check_eventlog_enabled ? 1 : 0) %>
 
 ; Check External Scripts - A simple wrapper to run external scripts and batch files.
-CheckExternalScripts = <%= @check_scripts_enabled %>
+CheckExternalScripts = <%= (@check_scripts_enabled ? 1 : 0) %>
 
 ; Helper function - Various helper function to extend other checks. This is also only supported through NRPE.
-CheckHelpers = <%= @check_helpers_enabled %>
+CheckHelpers = <%= (@check_helpers_enabled ? 1 : 0) %>
 
 ; Check NSCP - Checks the state of the agent
-CheckNSCP = <%= @check_nscp_enabled %>
+CheckNSCP = <%= (@check_nscp_enabled ? 1 : 0) %>
 
 ; CheckSystem - Various system related checks, such as CPU load, process state, service state memory usage and PDH counters.
-CheckSystem = <%= @check_system_enabled %>
+CheckSystem = <%= (@check_system_enabled ? 1 : 0) %>
 
 ; CheckWMI - CheckWMI can check various file and disk related things. The current version has commands to check Size of hard drives and directories.
-CheckWMI = <%= @check_wmi_enabled %>
+CheckWMI = <%= (@check_wmi_enabled ? 1 : 0) %>
 
 ; NRPE server - A simple server that listens for incoming NRPE connection and handles them.
-NRPEServer = <%= @check_nrpe_enabled %>
+NRPEServer = <%= (@nrpe_server_enabled ? 1 : 0) %>
 
 ; NSCAClient - Passive check support over NSCA.
-NSCAClient = <%= @nsca_client_enabled %>
+NSCAClient = <%= (@nsca_client_enabled ? 1 : 0) %>
 
 ; NSClient server - A simple server that listens for incoming NSClient (check_nt) connection and handles them. Although NRPE is the preferred method NSClient is fully supported and can be used for simplicity or for compatibility.
-NSClientServer = <%= @nsclient_server_enabled %>
+NSClientServer = <%= (@nsclient_server_enabled ? 1 : 0) %>
 
 ; Undocumented section
 [/settings/default]
