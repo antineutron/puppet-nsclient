@@ -14,6 +14,7 @@ class nsclient::install {
   validate_string($nsclient::package_name)
   validate_string($nsclient::install_path)
 
+  $file = "${nsclient::download_destination}\\${nsclient::package_source}"
   $source = "${nsclient::package_source_location}/${nsclient::package_source}"
 
   case downcase($::osfamily) {
