@@ -27,7 +27,7 @@ describe 'nsclient', :type => :class do
       'require'  => 'Download_file[NSCP-Installer]'
     )}
     it { should contain_service('nscp').with_ensure('running') }
-#
+
   end
 
   context 'installing a custom version' do
@@ -98,6 +98,7 @@ describe 'nsclient', :type => :class do
     it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NRPEServer = 1/) }
     it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSCAClient = 1/) }
     it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSClientServer = 1/) }
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = false/) }
   end
 
   context 'when check_disk is enabled' do
@@ -218,6 +219,43 @@ describe 'nsclient', :type => :class do
     let(:params) {{ 'nsclient_server_enabled' => false }}
 
     it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSClientServer = 0/) }
+  end
+
+  context 'when arguments are allowed' do
+    let(:params) {{ 'allow_arguments' => true }}
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = true/) }
+  end
+
+  context 'when arguments are not allowed' do
+    let(:params) {{ 'allow_arguments' => false }}
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = false/) }
+  end
+
+  context 'when arguments are not allowed and we try to use them' do
+    let(:params) {{ 'allow_arguments' => false }}
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = false/) }
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_cpu = checkCPU warn=80 crit=90 time=5m time=1m time=30s/) }
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_disk = CheckDriveSize MinWarn=10% MinCrit=5% CheckAll FilterType=FIXED/) }
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_disk_loose = CheckDriveSize MinWarn=10% MinCrit=5% CheckAll FilterType=FIXED ignore-unreadable/) }
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_event_log = CheckEventLog file=application file=system MaxWarn=1 MaxCrit=1 "filter=generated gt -2d AND severity NOT IN \('success', 'informational'\) AND source != 'SideBySide'" truncate=800 unique descriptions "syntax=%severity%: %source%: %message% \(%count%\)"/) }
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_mem = checkMem MaxWarn=80% MaxCrit=90% ShowAll=long type=physical type=virtual type=paged type=page/) }
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_up = checkUpTime MinWarn=1d MinWarn=1h/) }
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_volumes = CheckDriveSize MinWarn=10% MinCrit=5% CheckAll=volumes FilterType=FIXED/) }
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_volumes_loose = CheckDriveSize MinWarn=10% MinCrit=5% CheckAll=volumes FilterType=FIXED ignore-unreadable /) }
+
+  end
+
+  context 'when arguments are allowed and we use them' do
+    let(:params) {{ 'allow_arguments' => true }}
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = true/) }
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_cpu = checkCPU warn=\$ARG1\$ crit=\$ARG2\$ time=5m time=1m time=30s/) }
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_disk = CheckDriveSize MinWarn=\$ARG1\$% MinCrit=\$ARG2\$% CheckAll FilterType=FIXED/) }
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_disk_loose = CheckDriveSize MinWarn=\$ARG1\$% MinCrit=\$ARG2\$% CheckAll FilterType=FIXED ignore-unreadable/) }
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_event_log = CheckEventLog file=application file=system MaxWarn=\$ARG1\$ MaxCrit=\$ARG2\$ "filter=generated gt -2d AND severity NOT IN \('success', 'informational'\) AND source != 'SideBySide'" truncate=800 unique descriptions "syntax=%severity%: %source%: %message% \(%count%\)"/) }
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_mem = checkMem MaxWarn=\$ARG1\$% MaxCrit=\$ARG2\$% ShowAll=long type=physical type=virtual type=paged type=page/) }
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_up = checkUpTime MinWarn=\$ARG1\$ MinWarn=\$ARG2\$/) }
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_volumes = CheckDriveSize MinWarn=\$ARG1\$% MinCrit=\$ARG2\$% CheckAll=volumes FilterType=FIXED/) }
+    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_volumes_loose = CheckDriveSize MinWarn=\$ARG1\$% MinCrit=\$ARG2\$% CheckAll=volumes FilterType=FIXED ignore-unreadable /) }
   end
 
   context 'with a list of custom aliases' do
