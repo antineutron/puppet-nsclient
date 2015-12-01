@@ -77,7 +77,7 @@ class nsclient (
   $nrpe_server_enabled     = $nsclient::params::nrpe_server_enabled,
   $nsca_client_enabled     = $nsclient::params::nsca_client_enabled,
   $nsclient_server_enabled = $nsclient::params::nsclient_server_enabled,
-
+  $custom_aliases          = [],
 ) inherits nsclient::params {
 
   validate_string($package_source_location)
