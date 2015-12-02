@@ -28,4 +28,5 @@ class nsclient::params {
   $nsclient_server_enabled = true
   $allow_arguments         = false
   $insecure_enabled        = false
+  $custom_aliases          = []
 }
