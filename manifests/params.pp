@@ -28,4 +28,5 @@ class nsclient::params {
   $nsca_client_enabled     = true
   $nsclient_server_enabled = true
   $allow_arguments         = false
+  $insecure_enabled        = false
 }
