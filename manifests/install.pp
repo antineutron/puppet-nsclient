@@ -17,7 +17,7 @@ class nsclient::install {
   $file = "${nsclient::download_destination}\\${nsclient::package_source}"
   $source = "${nsclient::package_source_location}/${nsclient::package_source}"
 
-  notify {"Download from ${source}":}
+#  notify {"Download from ${source}":}
   case downcase($::osfamily) {
     'windows': {
 
