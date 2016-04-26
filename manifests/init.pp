@@ -80,6 +80,7 @@ class nsclient (
   $allow_arguments         = $nsclient::params::allow_arguments,
   $insecure_enabled        = $nsclient::params::insecure_enabled,
   $custom_aliases          = $nsclient::params::custom_aliases,
+  $external_scripts        = $nsclient::params::external_scripts,
 ) inherits nsclient::params {
 
   validate_string($package_source_location)

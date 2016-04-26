@@ -1,3 +1,5 @@
+### MANAGED BY PUPPET - DO NOT HAND EDIT ###
+
 # If you want to fill this file with all avalible options run the following command:
 #   nscp settings --generate --add-defaults --load-all
 # If you want to activate a module and bring in all its options use:
@@ -117,3 +119,9 @@ alias_<%= xalias['name'] %> = <%= xalias['command'] %> <%= xalias['args'] %>
 <% end -%>
 ; default - Alias for default. To configure this item add a section called: /settings/external scripts/alias/default
 default = 
+
+; External scripts
+[/settings/external scripts/scripts]
+<% @external_scripts.each do |script| -%>
+<%= script['name'] %> = <%= script['command'] %> <%= script['args'] %>
+<% end -%>

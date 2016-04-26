@@ -29,4 +29,5 @@ class nsclient::params {
   $allow_arguments         = false
   $insecure_enabled        = false
   $custom_aliases          = []
+  $external_scripts        = []
 }
