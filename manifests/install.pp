@@ -34,7 +34,6 @@ class nsclient::install {
       }
 
       package { $nsclient::package_name:
-        ensure          => installed,
         source          => $file,
         provider        => 'windows',
         install_options => [
@@ -45,6 +44,8 @@ class nsclient::install {
           },
         ],
         require         => Download_file['NSCP-Installer'],
+        ensure          => present,
+        provider        => 'chocolatey',
       }
     }
     default: {
