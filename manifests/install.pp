@@ -9,36 +9,11 @@
 #
 class nsclient::install {
 
-  validate_string($nsclient::package_source_location)
-  validate_string($nsclient::package_source)
-  validate_string($nsclient::package_name)
-  validate_string($nsclient::install_path)
-
-  $file = "${nsclient::download_destination}\\${nsclient::package_source}"
-  $source = "${nsclient::package_source_location}/${nsclient::package_source}"
-
-#  notify {"Download from ${source}":}
   case downcase($::osfamily) {
     'windows': {
 
-      if ! defined(File[$nsclient::download_destination]) {
-        file { $nsclient::download_destination:
-          ensure => directory,
-        }
-      }
-
-      download_file { 'NSCP-Installer':
-        url                   => $source,
-        destination_directory => $nsclient::download_destination,
-        require               => File[$nsclient::download_destination],
-      }
-
       package { $nsclient::package_name:
-        ensure          => installed,
-        source          => "${nsclient::download_destination}/${nsclient::package_source}",
-        provider        => 'windows',
-        install_options => ["INSTALLLOCATION=${nsclient::install_path}", "CONFIGURATION_TYPE=ini://${nsclient::install_path}\\nsclient.ini", '/quiet'],
-        require         => Download_file['NSCP-Installer'],
+        ensure          => latest,
       }
     }
     default: {
