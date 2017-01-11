@@ -4,10 +4,12 @@
 
 # == Class nsclient::params
 #
-# This privaye class is meant to be called from `nsclient`
+# This private class is meant to be called from `nsclient`
 # It sets variables according to platform
 #
 class nsclient::params {
+  $package_name            = 'nscp'
+  $ini_path                = 'C:/Program Files/NSClient++/nsclient.ini'
   $allowed_hosts           = []
   $service_state           = 'running'
   $service_enable          = true
@@ -16,7 +18,6 @@ class nsclient::params {
   $package_source          = 'NSCP-0.4.3.143-x64.msi'
   $download_destination    = 'C:\temp'
   $config_template         = 'nsclient/nsclient.ini.erb'
-  $install_path            = 'C:\Program Files\NSClient++'
   $check_disk_enabled      = true
   $check_eventlog_enabled  = true
   $check_scripts_enabled   = true
