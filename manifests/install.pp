@@ -13,7 +13,7 @@ class nsclient::install {
     'windows': {
 
       package { $nsclient::package_name:
-        ensure          => latest,
+        ensure          => present,
       }
     }
     default: {
