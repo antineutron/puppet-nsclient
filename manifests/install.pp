@@ -35,7 +35,7 @@ class nsclient::install {
 
       package { $nsclient::package_name:
         ensure          => installed,
-        source   => $file,
+        source          => $file,
         provider        => 'windows',
         install_options => [
           '/quiet',
