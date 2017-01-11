@@ -67,7 +67,7 @@ class nsclient (
   $package_name            = $nsclient::params::package_name,
   $download_destination    = $nsclient::params::download_destination,
   $config_template         = $nsclient::params::config_template,
-  $install_path            = $nsclient::params::install_path
+  $install_path            = $nsclient::params::install_path,
   $check_disk_enabled      = $nsclient::params::check_disk_enabled,
   $check_eventlog_enabled  = $nsclient::params::check_eventlog_enabled,
   $check_scripts_enabled   = $nsclient::params::check_scripts_enabled,
