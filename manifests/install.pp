@@ -13,7 +13,8 @@ class nsclient::install {
     'windows': {
 
       package { $nsclient::package_name:
-        ensure          => present,
+        ensure => present,
+        provider => 'chocolatey',
       }
     }
     default: {
