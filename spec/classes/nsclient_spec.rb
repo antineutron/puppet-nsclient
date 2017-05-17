@@ -94,180 +94,180 @@ describe 'nsclient', :type => :class do
   context 'when passing an array of allowed hosts' do
     let(:params) { { 'allowed_hosts' => ['10.21.0.0/22', '10.21.4.0/22'], 'service_state' => 'running', 'service_enable' => 'true' } }
 
-    # it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allowed hosts = 10\.21\.0\.0\/22,10\.21\.4\.0\/22/) }
+    # it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allowed hosts = 10\.21\.0\.0\/22,10\.21\.4\.0\/22/) }
     it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(%r{allowed hosts = 10.21.0.0/22,10.21.4.0/22}) }
   end
 
   context 'with default module settings' do
     let(:params) {{ }}
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckDisk = 1/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckEventLog = 1/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckExternalScripts = 1/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckHelpers = 1/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckNSCP = 1/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckSystem = 1/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckWMI = 1/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NRPEServer = 1/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSCAClient = 1/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSClientServer = 1/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = false/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckDisk = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckEventLog = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckExternalScripts = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckHelpers = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckNSCP = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckSystem = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckWMI = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NRPEServer = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSCAClient = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSClientServer = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = false/) }
   end
 
   context 'when check_disk is enabled' do
     let(:params) {{ 'check_disk_enabled' => true }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckDisk = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckDisk = 1/) }
   end
 
   context 'when check_disk is disabled' do
     let(:params) {{ 'check_disk_enabled' => false }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckDisk = 0/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckDisk = 0/) }
   end
 
   context 'when check_eventlog is enabled' do
     let(:params) {{ 'check_eventlog_enabled' => true }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckEventLog = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckEventLog = 1/) }
   end
 
   context 'when check_eventlog is disabled' do
     let(:params) {{ 'check_eventlog_enabled' => false }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckEventLog = 0/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckEventLog = 0/) }
   end
 
   context 'when check_scripts is enabled' do
     let(:params) {{ 'check_scripts_enabled' => true }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckExternalScripts = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckExternalScripts = 1/) }
   end
 
   context 'when check_scripts is disabled' do
     let(:params) {{ 'check_scripts_enabled' => false }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckExternalScripts = 0/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckExternalScripts = 0/) }
   end
 
   context 'when check_helpers is enabled' do
     let(:params) {{ 'check_helpers_enabled' => true }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckHelpers = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckHelpers = 1/) }
   end
 
   context 'when check_helpers is disabled' do
     let(:params) {{ 'check_helpers_enabled' => false }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckHelpers = 0/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckHelpers = 0/) }
   end
 
   context 'when check_nscp is enabled' do
     let(:params) {{ 'check_nscp_enabled' => true }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckNSCP = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckNSCP = 1/) }
   end
 
   context 'when check_nscp is disabled' do
     let(:params) {{ 'check_nscp_enabled' => false }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckNSCP = 0/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckNSCP = 0/) }
   end
 
   context 'when check_system is enabled' do
     let(:params) {{ 'check_system_enabled' => true }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckSystem = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckSystem = 1/) }
   end
 
   context 'when check_system is disabled' do
     let(:params) {{ 'check_system_enabled' => false }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckSystem = 0/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckSystem = 0/) }
   end
 
   context 'when check_wmi is enabled' do
     let(:params) {{ 'check_wmi_enabled' => true }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckWMI = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckWMI = 1/) }
   end
 
   context 'when check_wmi is disabled' do
     let(:params) {{ 'check_wmi_enabled' => false }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckWMI = 0/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckWMI = 0/) }
   end
 
   context 'when nrpe_server is enabled' do
     let(:params) {{ 'nrpe_server_enabled' => true }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NRPEServer = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NRPEServer = 1/) }
   end
 
   context 'when nrpe_server is disabled' do
     let(:params) {{ 'nrpe_server_enabled' => false }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NRPEServer = 0/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NRPEServer = 0/) }
   end
 
   context 'when nsca_client is enabled' do
     let(:params) {{ 'nsca_client_enabled' => true }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSCAClient = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSCAClient = 1/) }
   end
 
   context 'when nsca_client is disabled' do
     let(:params) {{ 'nsca_client_enabled' => false }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSCAClient = 0/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSCAClient = 0/) }
   end
 
   context 'when nsclient_server is enabled' do
     let(:params) {{ 'nsclient_server_enabled' => true }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSClientServer = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSClientServer = 1/) }
   end
 
   context 'when nsclient_server is disabled' do
     let(:params) {{ 'nsclient_server_enabled' => false }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSClientServer = 0/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSClientServer = 0/) }
   end
 
   context 'when arguments are allowed' do
     let(:params) {{ 'allow_arguments' => true }}
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = true/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = true/) }
   end
 
   context 'when arguments are not allowed' do
     let(:params) {{ 'allow_arguments' => false }}
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = false/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = false/) }
   end
 
   context 'when arguments are not allowed and we try to use them' do
     let(:params) {{ 'allow_arguments' => false }}
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = false/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_cpu = checkCPU warn=80 crit=90 time=5m time=1m time=30s/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_disk = CheckDriveSize MinWarn=10% MinCrit=5% CheckAll FilterType=FIXED/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_disk_loose = CheckDriveSize MinWarn=10% MinCrit=5% CheckAll FilterType=FIXED ignore-unreadable/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_event_log = CheckEventLog file=application file=system MaxWarn=1 MaxCrit=1 "filter=generated gt -2d AND severity NOT IN \('success', 'informational'\) AND source != 'SideBySide'" truncate=800 unique descriptions "syntax=%severity%: %source%: %message% \(%count%\)"/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_mem = checkMem MaxWarn=80% MaxCrit=90% ShowAll=long type=physical type=virtual type=paged type=page/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_up = checkUpTime MinWarn=1d MinWarn=1h/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_volumes = CheckDriveSize MinWarn=10% MinCrit=5% CheckAll=volumes FilterType=FIXED/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_volumes_loose = CheckDriveSize MinWarn=10% MinCrit=5% CheckAll=volumes FilterType=FIXED ignore-unreadable /) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = false/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_cpu = checkCPU warn=80 crit=90 time=5m time=1m time=30s/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_disk = CheckDriveSize MinWarn=10% MinCrit=5% CheckAll FilterType=FIXED/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_disk_loose = CheckDriveSize MinWarn=10% MinCrit=5% CheckAll FilterType=FIXED ignore-unreadable/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_event_log = CheckEventLog file=application file=system MaxWarn=1 MaxCrit=1 "filter=generated gt -2d AND severity NOT IN \('success', 'informational'\) AND source != 'SideBySide'" truncate=800 unique descriptions "syntax=%severity%: %source%: %message% \(%count%\)"/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_mem = checkMem MaxWarn=80% MaxCrit=90% ShowAll=long type=physical type=virtual type=paged type=page/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_up = checkUpTime MinWarn=1d MinWarn=1h/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_volumes = CheckDriveSize MinWarn=10% MinCrit=5% CheckAll=volumes FilterType=FIXED/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_volumes_loose = CheckDriveSize MinWarn=10% MinCrit=5% CheckAll=volumes FilterType=FIXED ignore-unreadable /) }
 
   end
 
   context 'when arguments are allowed and we use them' do
     let(:params) {{ 'allow_arguments' => true }}
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = true/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_cpu = checkCPU warn=\$ARG1\$ crit=\$ARG2\$ time=5m time=1m time=30s/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_disk = CheckDriveSize MinWarn=\$ARG1\$% MinCrit=\$ARG2\$% CheckAll FilterType=FIXED/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_disk_loose = CheckDriveSize MinWarn=\$ARG1\$% MinCrit=\$ARG2\$% CheckAll FilterType=FIXED ignore-unreadable/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_event_log = CheckEventLog file=application file=system MaxWarn=\$ARG1\$ MaxCrit=\$ARG2\$ "filter=generated gt -2d AND severity NOT IN \('success', 'informational'\) AND source != 'SideBySide'" truncate=800 unique descriptions "syntax=%severity%: %source%: %message% \(%count%\)"/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_mem = checkMem MaxWarn=\$ARG1\$% MaxCrit=\$ARG2\$% ShowAll=long type=physical type=virtual type=paged type=page/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_up = checkUpTime MinWarn=\$ARG1\$ MinWarn=\$ARG2\$/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_volumes = CheckDriveSize MinWarn=\$ARG1\$% MinCrit=\$ARG2\$% CheckAll=volumes FilterType=FIXED/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_volumes_loose = CheckDriveSize MinWarn=\$ARG1\$% MinCrit=\$ARG2\$% CheckAll=volumes FilterType=FIXED ignore-unreadable /) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = true/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_cpu = checkCPU warn=\$ARG1\$ crit=\$ARG2\$ time=5m time=1m time=30s/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_disk = CheckDriveSize MinWarn=\$ARG1\$% MinCrit=\$ARG2\$% CheckAll FilterType=FIXED/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_disk_loose = CheckDriveSize MinWarn=\$ARG1\$% MinCrit=\$ARG2\$% CheckAll FilterType=FIXED ignore-unreadable/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_event_log = CheckEventLog file=application file=system MaxWarn=\$ARG1\$ MaxCrit=\$ARG2\$ "filter=generated gt -2d AND severity NOT IN \('success', 'informational'\) AND source != 'SideBySide'" truncate=800 unique descriptions "syntax=%severity%: %source%: %message% \(%count%\)"/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_mem = checkMem MaxWarn=\$ARG1\$% MaxCrit=\$ARG2\$% ShowAll=long type=physical type=virtual type=paged type=page/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_up = checkUpTime MinWarn=\$ARG1\$ MinWarn=\$ARG2\$/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_volumes = CheckDriveSize MinWarn=\$ARG1\$% MinCrit=\$ARG2\$% CheckAll=volumes FilterType=FIXED/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_volumes_loose = CheckDriveSize MinWarn=\$ARG1\$% MinCrit=\$ARG2\$% CheckAll=volumes FilterType=FIXED ignore-unreadable /) }
   end
 
   context 'with a list of custom aliases' do
@@ -279,181 +279,181 @@ describe 'nsclient', :type => :class do
       ]
     }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_foo = MyFooCommand a list of args for foo/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_bar = MyBarCommand a list of args for bar/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_baz = MyBazCommand a list of args for baz/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_foo = MyFooCommand a list of args for foo/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_bar = MyBarCommand a list of args for bar/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_baz = MyBazCommand a list of args for baz/) }
   end
 
   context 'with default module settings' do
     let(:params) {{ }}
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckDisk = 1/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckEventLog = 1/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckExternalScripts = 1/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckHelpers = 1/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckNSCP = 1/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckSystem = 1/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckWMI = 1/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NRPEServer = 1/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSCAClient = 1/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSClientServer = 1/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = false/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckDisk = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckEventLog = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckExternalScripts = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckHelpers = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckNSCP = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckSystem = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckWMI = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NRPEServer = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSCAClient = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSClientServer = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = false/) }
   end
 
   context 'when check_disk is enabled' do
     let(:params) {{ 'check_disk_enabled' => true }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckDisk = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckDisk = 1/) }
   end
 
   context 'when check_disk is disabled' do
     let(:params) {{ 'check_disk_enabled' => false }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckDisk = 0/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckDisk = 0/) }
   end
 
   context 'when check_eventlog is enabled' do
     let(:params) {{ 'check_eventlog_enabled' => true }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckEventLog = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckEventLog = 1/) }
   end
 
   context 'when check_eventlog is disabled' do
     let(:params) {{ 'check_eventlog_enabled' => false }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckEventLog = 0/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckEventLog = 0/) }
   end
 
   context 'when check_scripts is enabled' do
     let(:params) {{ 'check_scripts_enabled' => true }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckExternalScripts = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckExternalScripts = 1/) }
   end
 
   context 'when check_scripts is disabled' do
     let(:params) {{ 'check_scripts_enabled' => false }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckExternalScripts = 0/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckExternalScripts = 0/) }
   end
 
   context 'when check_helpers is enabled' do
     let(:params) {{ 'check_helpers_enabled' => true }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckHelpers = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckHelpers = 1/) }
   end
 
   context 'when check_helpers is disabled' do
     let(:params) {{ 'check_helpers_enabled' => false }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckHelpers = 0/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckHelpers = 0/) }
   end
 
   context 'when check_nscp is enabled' do
     let(:params) {{ 'check_nscp_enabled' => true }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckNSCP = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckNSCP = 1/) }
   end
 
   context 'when check_nscp is disabled' do
     let(:params) {{ 'check_nscp_enabled' => false }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckNSCP = 0/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckNSCP = 0/) }
   end
 
   context 'when check_system is enabled' do
     let(:params) {{ 'check_system_enabled' => true }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckSystem = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckSystem = 1/) }
   end
 
   context 'when check_system is disabled' do
     let(:params) {{ 'check_system_enabled' => false }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckSystem = 0/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckSystem = 0/) }
   end
 
   context 'when check_wmi is enabled' do
     let(:params) {{ 'check_wmi_enabled' => true }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckWMI = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckWMI = 1/) }
   end
 
   context 'when check_wmi is disabled' do
     let(:params) {{ 'check_wmi_enabled' => false }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckWMI = 0/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/CheckWMI = 0/) }
   end
 
   context 'when nrpe_server is enabled' do
     let(:params) {{ 'nrpe_server_enabled' => true }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NRPEServer = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NRPEServer = 1/) }
   end
 
   context 'when nrpe_server is disabled' do
     let(:params) {{ 'nrpe_server_enabled' => false }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NRPEServer = 0/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NRPEServer = 0/) }
   end
 
   context 'when nsca_client is enabled' do
     let(:params) {{ 'nsca_client_enabled' => true }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSCAClient = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSCAClient = 1/) }
   end
 
   context 'when nsca_client is disabled' do
     let(:params) {{ 'nsca_client_enabled' => false }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSCAClient = 0/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSCAClient = 0/) }
   end
 
   context 'when nsclient_server is enabled' do
     let(:params) {{ 'nsclient_server_enabled' => true }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSClientServer = 1/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSClientServer = 1/) }
   end
 
   context 'when nsclient_server is disabled' do
     let(:params) {{ 'nsclient_server_enabled' => false }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSClientServer = 0/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/NSClientServer = 0/) }
   end
 
   context 'when arguments are allowed' do
     let(:params) {{ 'allow_arguments' => true }}
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = true/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = true/) }
   end
 
   context 'when arguments are not allowed' do
     let(:params) {{ 'allow_arguments' => false }}
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = false/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = false/) }
   end
 
   context 'when arguments are not allowed and we try to use them' do
     let(:params) {{ 'allow_arguments' => false }}
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = false/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_cpu = checkCPU warn=80 crit=90 time=5m time=1m time=30s/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_disk = CheckDriveSize MinWarn=10% MinCrit=5% CheckAll FilterType=FIXED/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_disk_loose = CheckDriveSize MinWarn=10% MinCrit=5% CheckAll FilterType=FIXED ignore-unreadable/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_event_log = CheckEventLog file=application file=system MaxWarn=1 MaxCrit=1 "filter=generated gt -2d AND severity NOT IN \('success', 'informational'\) AND source != 'SideBySide'" truncate=800 unique descriptions "syntax=%severity%: %source%: %message% \(%count%\)"/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_mem = checkMem MaxWarn=80% MaxCrit=90% ShowAll=long type=physical type=virtual type=paged type=page/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_up = checkUpTime MinWarn=1d MinWarn=1h/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_volumes = CheckDriveSize MinWarn=10% MinCrit=5% CheckAll=volumes FilterType=FIXED/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_volumes_loose = CheckDriveSize MinWarn=10% MinCrit=5% CheckAll=volumes FilterType=FIXED ignore-unreadable /) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = false/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_cpu = checkCPU warn=80 crit=90 time=5m time=1m time=30s/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_disk = CheckDriveSize MinWarn=10% MinCrit=5% CheckAll FilterType=FIXED/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_disk_loose = CheckDriveSize MinWarn=10% MinCrit=5% CheckAll FilterType=FIXED ignore-unreadable/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_event_log = CheckEventLog file=application file=system MaxWarn=1 MaxCrit=1 "filter=generated gt -2d AND severity NOT IN \('success', 'informational'\) AND source != 'SideBySide'" truncate=800 unique descriptions "syntax=%severity%: %source%: %message% \(%count%\)"/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_mem = checkMem MaxWarn=80% MaxCrit=90% ShowAll=long type=physical type=virtual type=paged type=page/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_up = checkUpTime MinWarn=1d MinWarn=1h/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_volumes = CheckDriveSize MinWarn=10% MinCrit=5% CheckAll=volumes FilterType=FIXED/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_volumes_loose = CheckDriveSize MinWarn=10% MinCrit=5% CheckAll=volumes FilterType=FIXED ignore-unreadable /) }
 
   end
 
   context 'when arguments are allowed and we use them' do
     let(:params) {{ 'allow_arguments' => true }}
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = true/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_cpu = checkCPU warn=\$ARG1\$ crit=\$ARG2\$ time=5m time=1m time=30s/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_disk = CheckDriveSize MinWarn=\$ARG1\$% MinCrit=\$ARG2\$% CheckAll FilterType=FIXED/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_disk_loose = CheckDriveSize MinWarn=\$ARG1\$% MinCrit=\$ARG2\$% CheckAll FilterType=FIXED ignore-unreadable/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_event_log = CheckEventLog file=application file=system MaxWarn=\$ARG1\$ MaxCrit=\$ARG2\$ "filter=generated gt -2d AND severity NOT IN \('success', 'informational'\) AND source != 'SideBySide'" truncate=800 unique descriptions "syntax=%severity%: %source%: %message% \(%count%\)"/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_mem = checkMem MaxWarn=\$ARG1\$% MaxCrit=\$ARG2\$% ShowAll=long type=physical type=virtual type=paged type=page/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_up = checkUpTime MinWarn=\$ARG1\$ MinWarn=\$ARG2\$/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_volumes = CheckDriveSize MinWarn=\$ARG1\$% MinCrit=\$ARG2\$% CheckAll=volumes FilterType=FIXED/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_volumes_loose = CheckDriveSize MinWarn=\$ARG1\$% MinCrit=\$ARG2\$% CheckAll=volumes FilterType=FIXED ignore-unreadable /) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/allow arguments = true/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_cpu = checkCPU warn=\$ARG1\$ crit=\$ARG2\$ time=5m time=1m time=30s/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_disk = CheckDriveSize MinWarn=\$ARG1\$% MinCrit=\$ARG2\$% CheckAll FilterType=FIXED/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_disk_loose = CheckDriveSize MinWarn=\$ARG1\$% MinCrit=\$ARG2\$% CheckAll FilterType=FIXED ignore-unreadable/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_event_log = CheckEventLog file=application file=system MaxWarn=\$ARG1\$ MaxCrit=\$ARG2\$ "filter=generated gt -2d AND severity NOT IN \('success', 'informational'\) AND source != 'SideBySide'" truncate=800 unique descriptions "syntax=%severity%: %source%: %message% \(%count%\)"/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_mem = checkMem MaxWarn=\$ARG1\$% MaxCrit=\$ARG2\$% ShowAll=long type=physical type=virtual type=paged type=page/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_up = checkUpTime MinWarn=\$ARG1\$ MinWarn=\$ARG2\$/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_volumes = CheckDriveSize MinWarn=\$ARG1\$% MinCrit=\$ARG2\$% CheckAll=volumes FilterType=FIXED/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_volumes_loose = CheckDriveSize MinWarn=\$ARG1\$% MinCrit=\$ARG2\$% CheckAll=volumes FilterType=FIXED ignore-unreadable /) }
   end
 
   context 'with a list of custom aliases' do
@@ -465,9 +465,9 @@ describe 'nsclient', :type => :class do
       ]
     }}
 
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_foo = MyFooCommand a list of args for foo/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_bar = MyBarCommand a list of args for bar/) }
-    it { should contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_baz = MyBazCommand a list of args for baz/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_foo = MyFooCommand a list of args for foo/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_bar = MyBarCommand a list of args for bar/) }
+    it { is_expected.to contain_file('C:\Program Files\NSClient++\nsclient.ini').with_content(/alias_baz = MyBazCommand a list of args for baz/) }
   end
 
 end
