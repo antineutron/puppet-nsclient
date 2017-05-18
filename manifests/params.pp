@@ -4,16 +4,17 @@
 
 # == Class nsclient::params
 #
-# This privaye class is meant to be called from `nsclient`
+# This private class is meant to be called from `nsclient`
 # It sets variables according to platform
 #
 class nsclient::params {
   $allowed_hosts           = []
   $service_state           = 'running'
   $service_enable          = true
-  $package_source_location = 'https://www.nsclient.org/files/stable'
+  # Release list at https://github.com/mickem/nscp/releases
+  $package_source_location = 'https://github.com/mickem/nscp/releases/download/0.5.1.26'
   $package_name            = 'NSClient++ (x64)'
-  $package_source          = 'NSCP-0.4.1.101-x64.msi'
+  $package_source          = 'NSCP-0.5.1.26-x64.msi'
   $download_destination    = 'c:/temp'
   $config_template         = 'nsclient/nsclient.ini.erb'
   $install_path            = 'C:\Program Files\NSClient++'
