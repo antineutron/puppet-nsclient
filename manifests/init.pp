@@ -64,7 +64,21 @@ class nsclient (
   $package_name            = $nsclient::params::package_name,
   $download_destination    = $nsclient::params::download_destination,
   $config_template         = $nsclient::params::config_template,
-  $install_path            = $nsclient::params::install_path
+  $install_path            = $nsclient::params::install_path,
+  $check_disk_enabled      = $nsclient::params::check_disk_enabled,
+  $check_eventlog_enabled  = $nsclient::params::check_eventlog_enabled,
+  $check_scripts_enabled   = $nsclient::params::check_scripts_enabled,
+  $check_helpers_enabled   = $nsclient::params::check_helpers_enabled,
+  $check_nscp_enabled      = $nsclient::params::check_nscp_enabled,
+  $check_system_enabled    = $nsclient::params::check_system_enabled,
+  $check_wmi_enabled       = $nsclient::params::check_wmi_enabled,
+  $nrpe_server_enabled     = $nsclient::params::nrpe_server_enabled,
+  $nsca_client_enabled     = $nsclient::params::nsca_client_enabled,
+  $nsclient_server_enabled = $nsclient::params::nsclient_server_enabled,
+  $allow_arguments         = $nsclient::params::allow_arguments,
+  $insecure_enabled        = $nsclient::params::insecure_enabled,
+  $custom_aliases          = $nsclient::params::custom_aliases,
+  $external_scripts        = $nsclient::params::external_scripts,
 ) inherits nsclient::params {
 
   validate_string($package_source_location)

@@ -18,4 +18,18 @@ class nsclient::params {
   $download_destination    = 'c:/temp'
   $config_template         = 'nsclient/nsclient.ini.erb'
   $install_path            = 'C:\Program Files\NSClient++'
+  $check_disk_enabled      = true
+  $check_eventlog_enabled  = true
+  $check_scripts_enabled   = true
+  $check_helpers_enabled   = true
+  $check_nscp_enabled      = true
+  $check_system_enabled    = true
+  $check_wmi_enabled       = true
+  $nrpe_server_enabled     = true
+  $nsca_client_enabled     = true
+  $nsclient_server_enabled = true
+  $allow_arguments         = false
+  $insecure_enabled        = false
+  $custom_aliases          = []
+  $external_scripts        = []
 }
